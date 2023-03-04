@@ -38,6 +38,7 @@ class MyHomePage extends StatelessWidget {
     TextEditingController txtPassword = TextEditingController();
     return Scaffold(
       body: SlidingUpPanel(
+        defaultPanelState: PanelState.OPEN,
           borderRadius: BorderRadius.circular(20),
           panel: Container(
             padding: EdgeInsets.all(20),

@@ -12,6 +12,7 @@ class ForgotPasswordScreen extends StatelessWidget {
     TextEditingController txtEmail = TextEditingController();
     return Scaffold(
       body: SlidingUpPanel(
+        defaultPanelState: PanelState.OPEN,
           borderRadius: BorderRadius.circular(20),
           panel: Container(
             padding: EdgeInsets.all(20),
