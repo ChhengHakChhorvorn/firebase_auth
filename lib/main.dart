@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_demo/Views/ForgotPassword.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'Views/HomePage.dart';
@@ -124,6 +125,22 @@ class MyHomePage extends StatelessWidget {
                             style: TextStyle(color: Colors.grey),
                           ))
                     ],
+                  ),
+                  Container(
+                    width: double.infinity,
+                    child: CupertinoButton(
+                      child: Text("Login With Facebook"),
+                      onPressed: () async {
+                        final LoginResult result = await FacebookAuth.instance.login(
+                          permissions: ['public_profile', 'email'],
+                        );
+// or
+// FacebookAuth.i.login(
+//   permissions: ['public_profile', 'email', 'pages_show_list', 'pages_messaging', 'pages_manage_metadata'],
+// )
+                      },
+                      color: Color(0xffFE9C80),
+                    ),
                   ),
                   SizedBox(
                     height: 30,
