@@ -39,7 +39,7 @@ class MyHomePage extends StatelessWidget {
     TextEditingController txtPassword = TextEditingController();
     return Scaffold(
       body: SlidingUpPanel(
-        defaultPanelState: PanelState.OPEN,
+          defaultPanelState: PanelState.OPEN,
           borderRadius: BorderRadius.circular(20),
           panel: Container(
             padding: EdgeInsets.all(20),
@@ -131,13 +131,8 @@ class MyHomePage extends StatelessWidget {
                     child: CupertinoButton(
                       child: Text("Login With Facebook"),
                       onPressed: () async {
-                        final LoginResult result = await FacebookAuth.instance.login(
-                          permissions: ['public_profile', 'email'],
-                        );
-// or
-// FacebookAuth.i.login(
-//   permissions: ['public_profile', 'email', 'pages_show_list', 'pages_messaging', 'pages_manage_metadata'],
-// )
+                        final LoginResult result =
+                            await FacebookAuth.instance.login();
                       },
                       color: Color(0xffFE9C80),
                     ),

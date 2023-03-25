@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
+import 'add_user_page.dart';
+
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({super.key});
 
@@ -64,6 +66,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                 },
                 color: Colors.redAccent,
               ),
+
               TextButton(
                   onPressed: () async {
                     await FirebaseAuth.instance.signOut().then((value) => {
@@ -74,7 +77,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                               ))
                         });
                   },
-                  child: Text('Logout'))
+                  child: Text('Logout'),)
             ],
           ),
         ),

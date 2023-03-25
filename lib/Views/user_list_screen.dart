@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_demo/Views/add_user_page.dart';
 import 'package:flutter/material.dart';
+
+import '../model/user_model.dart';
 
 class UserListScreen extends StatefulWidget {
   const UserListScreen({Key? key}) : super(key: key);
@@ -10,8 +13,8 @@ class UserListScreen extends StatefulWidget {
 }
 
 class _UserListScreenState extends State<UserListScreen> {
-
-  CollectionReference _collectionReference = FirebaseFirestore.instance.collection('user');
+  CollectionReference _collectionReference =
+      FirebaseFirestore.instance.collection('user');
 
   getUerList() async {
     QuerySnapshot querySnapshot = await _collectionReference.get();
@@ -28,34 +31,47 @@ class _UserListScreenState extends State<UserListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('User List'),
-        ),
-        body: FutureBuilder(
-          future: getUerList(),
-          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-            return snapshot.hasError
-                ? Center(
-                    child: Text('Database has Error'),
-                  )
-                : snapshot.connectionState == ConnectionState.waiting
-                    ? Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : snapshot.hasData
-                        ? ListView.builder(
-              itemCount: snapshot.data.length,
-              shrinkWrap: true,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Card(
-                                child: ListTile(
-                                  title: Text(snapshot.data![index]['userName']),
-                                ),
-                              );
-                            },
-                          )
-                        : SizedBox.shrink();
-          },
-        ));
+      appBar: AppBar(
+        title: Text('User List'),
+      ),
+      body: StreamBuilder<List<User>>(stream: readUsers() ,builder: (context, snapshot) {
+        if(snapshot.hasData){
+          final users = snapshot.data!;
+          return ListView(children: users.map((e) => ListTile(
+            leading: ClipOval(child: Text(e.userId.toString(),),),
+            title: Text(e.userName),
+            subtitle: Text(e.email),
+          )).toList(),);
+        }else if(snapshot.hasError)
+          {
+            print(snapshot.error);
+            return Center(child: Text('Something went wrong'),);
+          }else{
+          return Center(child: CircularProgressIndicator(),);
+        }
+      },),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddUserScreen(),
+            ),
+          );
+        },
+      ),
+    );
   }
+
+  Stream<List<User>> readUsers() =>
+      FirebaseFirestore.instance.collection('user').snapshots().map(
+            (snapshot) => snapshot.docs
+                .map(
+                  (doc) => User.fromJson(
+                    doc.data(),
+                  ),
+                )
+                .toList(),
+          );
 }

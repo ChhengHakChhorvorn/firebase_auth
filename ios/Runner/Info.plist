@@ -2,14 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-
     <key>CFBundleURLTypes</key>
     <array>
       <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb152523430987648</string>
-      </array>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>fb152523430987648</string>
+        </array>
       </dict>
     </array>
     <key>FacebookAppID</key>
@@ -17,8 +16,12 @@
     <key>FacebookClientToken</key>
     <string>1671332cb8bbc39c087a379492055011</string>
     <key>FacebookDisplayName</key>
-    <string>Flutter Login</string>
-
+    <string>Flutter Firebase Auth</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>fbapi</string>
+      <string>fb-messenger-share-api</string>
+    </array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
