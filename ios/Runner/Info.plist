@@ -7,21 +7,17 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>fb152523430987648</string>
+          <string>fb3015783638716788</string>
         </array>
       </dict>
     </array>
     <key>FacebookAppID</key>
-    <string>152523430987648</string>
+    <string>3015783638716788</string>
     <key>FacebookClientToken</key>
-    <string>1671332cb8bbc39c087a379492055011</string>
+    <string>fc99c8353abfb24593893a21709f6114</string>
     <key>FacebookDisplayName</key>
-    <string>Flutter Firebase Auth</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>fbapi</string>
-      <string>fb-messenger-share-api</string>
-    </array>
+    <string>fireauth</string>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

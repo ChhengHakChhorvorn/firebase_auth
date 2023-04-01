@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-
 import 'Views/HomePage.dart';
 import 'Views/SignupPage.dart';
 
@@ -133,6 +132,18 @@ class MyHomePage extends StatelessWidget {
                       onPressed: () async {
                         final LoginResult result =
                             await FacebookAuth.instance.login();
+                        if (result.status == LoginStatus.success) {
+                          final AccessToken accessToken = result.accessToken!;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePageScreen(),
+                            ),
+                          );
+                        } else {
+                          print(result.status);
+                          print(result.message);
+                        }
                       },
                       color: Color(0xffFE9C80),
                     ),

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_demo/Views/product_list_screen.dart';
 import 'package:firebase_demo/Views/user_list_screen.dart';
 import 'package:firebase_demo/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -65,6 +66,18 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   );
                 },
                 color: Colors.redAccent,
+              ),
+              CupertinoButton(
+                child: Text('Product List'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductListScreen(),
+                    ),
+                  );
+                },
+                color: Colors.deepPurpleAccent,
               ),
 
               TextButton(

@@ -13,14 +13,6 @@ class UserListScreen extends StatefulWidget {
 }
 
 class _UserListScreenState extends State<UserListScreen> {
-  CollectionReference _collectionReference =
-      FirebaseFirestore.instance.collection('user');
-
-  getUerList() async {
-    QuerySnapshot querySnapshot = await _collectionReference.get();
-    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
-    return allData;
-  }
 
   @override
   void initState() {

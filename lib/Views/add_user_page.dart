@@ -68,14 +68,14 @@ class _AddUserScreenState extends State<AddUserScreen> {
       'email' : txtEmail.text
     };
     //add Data
-    //db.add(json);
+    db.add(json);
 
     //Update Data
-    db.doc('IfbS3ibrEexnXx874BA8').update({
-      'userName': 'David Long'
-    });
+    // db.doc('IfbS3ibrEexnXx874BA8').update({
+    //   'userName': 'David Long'
+    // });
 
     //Delete data
-    db.doc('IfbS3ibrEexnXx874BA8').delete();
+    // db.doc('IfbS3ibrEexnXx874BA8').delete();
   }
 }
